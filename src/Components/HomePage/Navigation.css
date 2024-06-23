@@ -1,0 +1,26 @@
+
+.menu{
+  background-color: #d9f0ee;
+  width:300px;
+  height: 100vh;
+  border-right: 0;;
+}
+
+.submenu .ant-menu-submenu-title {
+  font-weight: bold;
+  font-family: 'Arial', sans-serif;
+  color: black;
+}
+
+.menu .ant-menu-item {
+  font-family: 'Arial';
+  font-size: 15px;
+  color: #345574; 
+}
+
+
+.menu .ant-menu-item-selected {
+  font-weight: bold;
+  color: #0c30ce;
+  background-color: #68686d70;
+}
