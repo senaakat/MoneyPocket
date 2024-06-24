@@ -65,11 +65,12 @@ function Login() {
               ]}
               label="Email"
               name={"myEmail"}
+              labelAlign="left"
             >
               <Input
                 className="inputLogin"
                 placeholder="Enter your Email"
-                style={{ marginLeft: 25, width: "20vw", height: "4vh" }}
+                style={{ width: "20vw", height: "4vh" }}
               />
             </FormItem>
 
@@ -83,6 +84,7 @@ function Login() {
               ]}
               label="Password"
               name={"myPassword"}
+              labelAlign="left"
             >
               <Input.Password
                 placeholder="Enter your Password"

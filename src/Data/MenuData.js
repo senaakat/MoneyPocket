@@ -13,26 +13,24 @@ const menuData = [
     title: "HESAP",
     items: [
       { key: "1", label: "PROFİL", link: "/profile" },
-      { key: "2", label: "ŞİFRE GÜNCELLEME" },
-      { key: "3", label: "İLETİŞİM TERCİHLERİ" },
-      { key: "4", label: "BİLGİ GÜNCELLEME" },
+      { key: "2", label: "ŞİFRE GÜNCELLEME", link: "/changePassword" },
     ],
   },
   {
     key: "overview",
     icon: <HomeTwoTone />,
     title: "ANA GÖRÜNÜM",
-    items: [{ key: "1", label: "ÖZET" }],
+    items: [{ key: "1", label: "ÖZET", link: "/home" }],
   },
   {
     key: "sub2",
     icon: <LaptopOutlined />,
     title: "İŞLEMLER",
     items: [
-      { key: "5", label: "Gelir Ekle" },
-      { key: "6", label: "Gider Ekle" },
-      { key: "7", label: "İstatistiğim" },
-      { key: "8", label: "Takvim" },
+      { key: "5", label: "Gelir Ekle", link: "/add-expense" },
+      { key: "6", label: "Gider Ekle", link: "/add-income" },
+      { key: "7", label: "İstatistiğim", link: "/add-income" },
+      { key: "8", label: "Takvim", link: "/calendar" },
     ],
   },
   {

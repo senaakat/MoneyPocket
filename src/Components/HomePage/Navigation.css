@@ -1,9 +1,5 @@
-
-.menu{
-  background-color: #d9f0ee;
-  width:300px;
-  height: 100vh;
-  border-right: 0;;
+.menu {
+  height: 135vh;
 }
 
 .submenu .ant-menu-submenu-title {
@@ -17,7 +13,6 @@
   font-size: 15px;
   color: #345574; 
 }
-
 
 .menu .ant-menu-item-selected {
   font-weight: bold;
