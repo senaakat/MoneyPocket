@@ -4,7 +4,7 @@ import Login from "./Page/Login";
 import HomePage from "./Page/HomePage";
 import Profile from "./Components/HomePage/Profile";
 import ChangePassword from "./Components/NavigationBar/ChangePassword";
-import Expense from "./Components/HomePage/Expense";
+import { Calendar } from "antd";
 
 function App() {
   return (
@@ -16,7 +16,8 @@ function App() {
             <Route path="/home" element={<HomePage />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/changepassword" element={<ChangePassword />} />
-            <Route path="/add-expense" component={Expense} />
+            <Route path="/add-expense" element={<HomePage />} />
+            <Route path="/calendar" element={<Calendar />} />
           </Routes>
         </BrowserRouter>
       </>

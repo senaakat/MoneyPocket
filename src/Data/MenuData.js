@@ -27,10 +27,8 @@ const menuData = [
     icon: <LaptopOutlined />,
     title: "İŞLEMLER",
     items: [
-      { key: "5", label: "Gelir Ekle", link: "/add-expense" },
-      { key: "6", label: "Gider Ekle", link: "/add-income" },
-      { key: "7", label: "İstatistiğim", link: "/add-income" },
-      { key: "8", label: "Takvim", link: "/calendar" },
+      { key: "5", label: "Gelir-Gider Ekle", link: "/add-expense" },
+      { key: "6", label: "Takvim", link: "/calendar" },
     ],
   },
   {
@@ -40,7 +38,7 @@ const menuData = [
     items: [
       { key: "9", label: "GİZLİLİK" },
       { key: "10", label: "GÜVENLİK" },
-      { key: "11", label: "HELP" },
+      { key: "11", label: "YARDIM" },
     ],
   },
   {

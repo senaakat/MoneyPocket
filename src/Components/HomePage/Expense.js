@@ -66,9 +66,9 @@ function Expense() {
   return (
     <div className="expense-container">
       <Card className="expense-header">
-        <h1>Financial Tracker</h1>
+        <h1>FİNANS TAKİPÇİSİ</h1>
         <Form className="expense-form">
-          <Form.Item label="Category">
+          <Form.Item label="Kategori">
             <Select value={category} onChange={setCategory}>
               {categories.map((cat) => (
                 <Select.Option key={cat.id} value={cat.name}>
@@ -77,14 +77,14 @@ function Expense() {
               ))}
             </Select>
           </Form.Item>
-          <Form.Item label="Amount">
+          <Form.Item label="Tutar">
             <Input
               type="number"
               value={amount}
               onChange={(e) => setAmount(e.target.value)}
             />
           </Form.Item>
-          <Form.Item label="Date">
+          <Form.Item label="Tarih">
             <DatePicker
               value={selectedDate ? moment(selectedDate) : null}
               onChange={handleDateChange}
@@ -96,16 +96,16 @@ function Expense() {
           <Form.Item>
             <div className="expense-buttons">
               <Button type="primary" onClick={handleAddTransaction}>
-                Add Transaction
+                Tutar Ekle
               </Button>
 
               <Button type="primary" onClick={handleRemoveTransaction}>
-                Remove Transaction
+                Tutar Çıkar
               </Button>
             </div>
           </Form.Item>
         </Form>
-        <div className="total-income">Total Income: ${totalIncome}</div>
+        <div className="total-income">CÜZDANIM: ${totalIncome}</div>
 
         <div>
           {transactions.map((t, index) => (
@@ -116,6 +116,8 @@ function Expense() {
             </Card>
           ))}
         </div>
+      </Card>
+      <Card className="charts-container">
         <div>
           <PieChart transactions={transactions} />
         </div>

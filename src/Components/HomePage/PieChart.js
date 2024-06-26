@@ -32,14 +32,14 @@ const PieChart = ({ transactions }) => {
   // Özel renkler ve kenarlık ayarları
   const data = [
     {
-      name: "Income",
+      name: "GELİR",
       value: totalIncome,
       percentage: incomePercentage,
       fill: "#0088FE",
       stroke: "#0088FE",
     },
     {
-      name: "Expense",
+      name: "GİDER",
       value: totalExpense,
       percentage: expensePercentage,
       fill: "#FF8042",
