@@ -4,9 +4,6 @@ import Navigation from "../Components/HomePage/Navigation";
 import "./HomePage.css";
 import AddIncome from "../Components/HomePage/AddIncome";
 import AddExpense from "../Components/HomePage/Expense";
-import Timeline from "../Components/HomePage/TimeLine";
-import CalendarComponent from "../Components/HomePage/CalendarComponent";
-import { Row, Col } from "antd";
 
 const { Sider, Content } = Layout;
 
