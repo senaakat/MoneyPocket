@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Form, Input, Button, Select, Card, DatePicker } from "antd";
 import { useState } from "react";
 import "./Expense.css";
@@ -7,8 +7,41 @@ import { useTransactionContext } from "../../Data/TransactionContext";
 import moment from "moment";
 import PieChart from "./PieChart.js";
 import CategoriesChart from "./CategoriesChart.js";
+import { db } from "../../Config/firebase.js";
+import { addDoc, getDocs, collection } from "firebase/firestore";
+
+const expenseDbCollectionRef = collection(db, "expense");
 
 function Expense() {
+  useEffect(() => {
+    const getExpenses = async () => {
+      try {
+        const querySnapshot = await getDocs(expenseDbCollectionRef);
+        const fetchedTransactions = [];
+        let incomeTotal = 0;
+
+        querySnapshot.forEach((doc) => {
+          const transaction = {
+            id: doc.id,
+            ...doc.data(),
+            date: doc.data().date.toDate(),
+          };
+          fetchedTransactions.push(transaction);
+          if (transaction.amount > 0) {
+            incomeTotal += transaction.amount;
+          }
+        });
+
+        setTransactions(fetchedTransactions);
+        setTotalIncome(incomeTotal);
+      } catch (error) {
+        console.error("Error getting documents: ", error);
+      }
+    };
+
+    getExpenses();
+  }, []);
+
   const { addTransaction, selectedDate, setSelectedDate } =
     useTransactionContext();
   const [transactions, setTransactions] = useState([]);
@@ -22,7 +55,7 @@ function Expense() {
     setShowDatePicker(false);
   };
 
-  const handleAddTransaction = () => {
+  const handleAddTransaction = async () => {
     if (!selectedDate) {
       alert("Lütfen bir tarih seçin.");
       return;
@@ -35,15 +68,22 @@ function Expense() {
       amount: parsedAmount,
       date: selectedDate.toDate(),
     };
-    addTransaction(newTransaction);
-    setTransactions([...transactions, newTransaction]);
-    setTotalIncome((prevTotal) => prevTotal + parsedAmount);
-    setCategory("");
-    setAmount(0);
-    setSelectedDate(null);
+
+    try {
+      const docRef = await addDoc(expenseDbCollectionRef, newTransaction);
+      newTransaction.id = docRef.id;
+      addTransaction(newTransaction);
+      setTransactions([...transactions, newTransaction]);
+      setTotalIncome((prevTotal) => prevTotal + parsedAmount);
+      setCategory("");
+      setAmount(0);
+      setSelectedDate(null);
+    } catch (error) {
+      console.error("Error adding transaction: ", error);
+    }
   };
 
-  const handleRemoveTransaction = () => {
+  const handleRemoveTransaction = async () => {
     if (!selectedDate) {
       alert("Lütfen bir tarih seçin.");
       return;
@@ -55,12 +95,18 @@ function Expense() {
       amount: -parsedAmount,
       date: selectedDate.toDate(),
     };
-    addTransaction(newTransaction);
-    setTransactions([...transactions, newTransaction]);
-    setTotalIncome((prevTotal) => prevTotal - parsedAmount);
-    setCategory("");
-    setAmount(0);
-    setSelectedDate(null);
+    try {
+      const docRef = await addDoc(expenseDbCollectionRef, newTransaction);
+      newTransaction.id = docRef.id;
+      addTransaction(newTransaction);
+      setTransactions([...transactions, newTransaction]);
+      setTotalIncome((prevTotal) => prevTotal - parsedAmount);
+      setCategory("");
+      setAmount(0);
+      setSelectedDate(null);
+    } catch (error) {
+      console.error("Error adding transaction: ", error);
+    }
   };
 
   return (
@@ -86,7 +132,7 @@ function Expense() {
           </Form.Item>
           <Form.Item label="Tarih">
             <DatePicker
-              value={selectedDate ? moment(selectedDate) : null}
+              value={selectedDate ? moment(selectedDate.toDate()) : null}
               onChange={handleDateChange}
               style={{ width: "100%" }}
               open={showDatePicker}
@@ -112,7 +158,7 @@ function Expense() {
             <Card className="transaction-card" key={index}>
               <p>Category: {t.category}</p>
               <p>Amount: {t.amount}</p>
-              <p>Date: {new Date(t.date).toDateString()}</p>
+              <p>Date: {moment(t.date).format("YYYY-MM-DD")}</p>
             </Card>
           ))}
         </div>

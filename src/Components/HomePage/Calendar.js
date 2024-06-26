@@ -5,6 +5,8 @@ import moment from "moment";
 import { List, Modal } from "antd";
 import { Button } from "antd";
 import "./Calendar.css";
+import { useEffect } from "react";
+import { db } from "../../Config/firebase";
 
 function Calendar() {
   const { transactions } = useTransactionContext();
@@ -18,6 +20,25 @@ function Calendar() {
     date: moment(transaction.date).format("YYYY-MM-DD"),
     type: transaction.amount >= 0 ? "income" : "expense",
   }));
+
+  useEffect(() => {
+    const handleAddToFirestore = async () => {
+      try {
+        const batch = db.batch();
+        events.forEach((event) => {
+          const docRef = db.collection("expense").doc();
+          batch.set(docRef, event);
+        });
+        await batch.commit();
+        console.log("Events added to Firestore successfully!");
+      } catch (error) {
+        console.error("Error adding events to Firestore: ", error);
+      }
+    };
+
+    handleAddToFirestore();
+  }, [events]);
+
   return (
     <div className="calendar-container">
       <h2>Ekstre Takvimim</h2>

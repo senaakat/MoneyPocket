@@ -1,70 +1,68 @@
-import React from "react";
-import { PlusOutlined } from "@ant-design/icons";
-import { Card } from "antd";
-import { useState } from "react";
-import treeData from "../../Data/TreeData";
-import Navigation from "../HomePage/Navigation";
-import { Layout, Row, Col } from "antd";
+import React, { useState } from "react";
+import { PlusOutlined, DeleteOutlined } from "@ant-design/icons";
 import {
+  Card,
   Button,
-  DatePicker,
+  Layout,
+  Row,
+  Col,
   Form,
   Input,
-  InputNumber,
   Select,
   TreeSelect,
+  DatePicker,
+  InputNumber,
 } from "antd";
 import "./Profile.css";
+import { db } from "../../Config/firebase";
+import { collection, getDocs, addDoc } from "firebase/firestore";
+import treeData from "../../Data/TreeData";
+import Navigation from "../HomePage/Navigation";
 
 const { Sider, Content } = Layout;
 
+const jobCollectionRef = collection(db, "profile");
+
 function Profile({ onPasswordChange }) {
-  // const [job] = useState(treeData);
-
-  // const jobCollectionRef = collection(db, "meslekler");
-
-  // useEffect(() => {
-  //   const getJob = async () => {
-  //     try {
-  //       const data = await getDocs(jobCollectionRef);
-  //       console.log(data);
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   };
-  //   getJob();
-  // }, []);
-
-  // const fetchTreeData = async () => {
-  //   const jobCollectionRef = collection(db, "meslekler");
-  //   const snapshot = await getDocs(jobCollectionRef);
-  //   const treeData1 = snapshot.docs.map((doc) => ({
-  //     title: doc.data().title,
-  //     value: doc.data().value,
-  //     children: doc.data().children,
-  //   }));
-  //   return treeData;
-  // };
-
-  // const [treeData, setTreeData] = useState([]);
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const data = await fetchTreeData();
-  //     setTreeData(data);
-  //   };
-  //   fetchData();
-  // }, []);
-
   const [formData, setFormData] = useState({});
   const [selectedImage, setSelectedImage] = useState(null);
 
-  const handlePasswordChange = (values) => {
-    onPasswordChange(values.password);
+  const getList = async (ref, setfunc) => {
+    try {
+      const newListData = await getDocs(ref);
+      const wantedData = newListData.docs.map((doc) => ({
+        ...doc.data(),
+        key: doc.id,
+      }));
+      setfunc(wantedData);
+    } catch (err) {
+      console.error(err);
+    }
   };
 
-  const handleSave = () => {
-    console.log("Kaydedilen veriler:", formData);
+  const saveNewUnavableRoom = async (data) => {
+    try {
+      await addDoc(jobCollectionRef, data);
+      getList(jobCollectionRef, setFormData);
+      console.log("Kaydedildi");
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const handleSave = async () => {
+    try {
+      await saveNewUnavableRoom(formData);
+      console.log("Form Verileri:", formData);
+      console.log("Kaydet butonuna basıldı.");
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const removeImage = () => {
+    setSelectedImage(null);
+    setFormData({ ...formData, profileImage: null });
   };
 
   return (
@@ -96,11 +94,20 @@ function Profile({ onPasswordChange }) {
                     <div>Resim Seç</div>
                   </label>
                   {selectedImage && (
-                    <img
-                      src={selectedImage}
-                      alt="Seçilen Resim"
-                      className="uploaded-image"
-                    />
+                    <div className="selected-image-container">
+                      <img
+                        src={selectedImage}
+                        alt="Seçilen Resim"
+                        className="uploaded-image"
+                      />
+                      <Button
+                        type="link"
+                        icon={<DeleteOutlined />}
+                        onClick={removeImage}
+                      >
+                        Resmi Kaldır
+                      </Button>
+                    </div>
                   )}
                 </div>
               </Card>
@@ -108,33 +115,34 @@ function Profile({ onPasswordChange }) {
             <Col span={12}>
               <Card className="form-spacing">
                 <Form
-                  labelCol={{
-                    span: 4,
-                  }}
-                  wrapperCol={{
-                    span: 14,
-                  }}
+                  labelCol={{ span: 4 }}
+                  wrapperCol={{ span: 14 }}
                   layout="horizontal"
-                  initialValues={{
-                    size: "large",
-                  }}
+                  initialValues={{ size: "large" }}
                   size="large"
-                  style={{
-                    maxWidth: 600,
-                  }}
-                  onFinish={(values) => {
-                    setFormData(values);
-                    handleSave();
-                  }}
+                  style={{ maxWidth: 600 }}
+                  onFinish={handleSave}
                 >
                   <Form.Item label="AD" labelAlign="left">
-                    <Input />
+                    <Input
+                      onChange={(e) =>
+                        setFormData({ ...formData, firstName: e.target.value })
+                      }
+                    />
                   </Form.Item>
                   <Form.Item label="SOYAD" labelAlign="left">
-                    <Input />
+                    <Input
+                      onChange={(e) =>
+                        setFormData({ ...formData, lastName: e.target.value })
+                      }
+                    />
                   </Form.Item>
                   <Form.Item label="T.C." labelAlign="left">
-                    <Input />
+                    <Input
+                      onChange={(e) =>
+                        setFormData({ ...formData, tc: e.target.value })
+                      }
+                    />
                   </Form.Item>
                   <Form.Item
                     label="E-MAİL"
@@ -147,64 +155,66 @@ function Profile({ onPasswordChange }) {
                       },
                     ]}
                   >
-                    <Input type="email" />
+                    <Input
+                      type="email"
+                      onChange={(e) =>
+                        setFormData({ ...formData, email: e.target.value })
+                      }
+                    />
                   </Form.Item>
                   <Form.Item label="CİNSİYET" labelAlign="left">
-                    <Select>
-                      <Select.Option value="male">KADIN</Select.Option>
-                      <Select.Option value="female">ERKEK</Select.Option>
-                      <Select.Option value="other">OTHER</Select.Option>
+                    <Select
+                      onChange={(value) =>
+                        setFormData({ ...formData, gender: value })
+                      }
+                    >
+                      <Select.Option key="male" value="male">
+                        ERKEK
+                      </Select.Option>
+                      <Select.Option key="female" value="female">
+                        KADIN
+                      </Select.Option>
+                      <Select.Option key="other" value="other">
+                        DİĞER
+                      </Select.Option>
                     </Select>
                   </Form.Item>
                   <Form.Item label="MESLEK" labelAlign="left">
-                    <TreeSelect treeData={treeData} />
+                    <TreeSelect
+                      treeData={treeData}
+                      onChange={(value) =>
+                        setFormData({ ...formData, profession: value })
+                      }
+                    />
                   </Form.Item>
                   <Form.Item label="ÜLKE" labelAlign="left">
-                    <Input />
+                    <Input
+                      onChange={(e) =>
+                        setFormData({ ...formData, country: e.target.value })
+                      }
+                    />
                   </Form.Item>
                   <Form.Item
-                    label="DOĞUM "
+                    label="DOĞUM TARİHİ"
                     style={{ fontSize: "8px" }}
                     labelAlign="left"
                   >
-                    <DatePicker />
+                    <DatePicker
+                      onChange={(date, dateString) =>
+                        setFormData({ ...formData, birthDate: dateString })
+                      }
+                    />
                   </Form.Item>
                   <Form.Item
                     label="GELİR"
                     style={{ fontSize: "12px" }}
                     labelAlign="left"
                   >
-                    <InputNumber />
-                  </Form.Item>
-                </Form>
-                <Form onFinish={handlePasswordChange}>
-                  <h4 style={{ marginBottom: 10 }}>Şifre Değiştir: </h4>
-                  <Form.Item
-                    label="Mevcut Parola"
-                    name="currentPassword"
-                    rules={[
-                      { required: true, message: "Mevcut parolanızı girin" },
-                    ]}
-                    style={{ display: "flex", alignItems: "center" }}
-                    labelAlign="left"
-                  >
-                    <Input.Password style={{ marginLeft: 10 }} />
-                  </Form.Item>
-                  <Form.Item
-                    label="Yeni Parola"
-                    name="newPassword"
-                    rules={[
-                      { required: true, message: "Yeni parolanızı girin" },
-                    ]}
-                    style={{ display: "flex", alignItems: "center" }}
-                    labelAlign="left"
-                  >
-                    <Input.Password style={{ marginLeft: 10 }} />
-                  </Form.Item>
-                  <Form.Item>
-                    <Button type="primary" htmlType="submit">
-                      Parolayı Değiştir
-                    </Button>
+                    <InputNumber
+                      onChange={(value) =>
+                        setFormData({ ...formData, income: value })
+                      }
+                    />
                   </Form.Item>
                   <Form.Item>
                     <Button type="primary" htmlType="submit">
