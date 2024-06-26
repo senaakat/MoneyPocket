@@ -2,7 +2,7 @@ import React from "react";
 import { Layout } from "antd";
 import Navigation from "../Components/HomePage/Navigation";
 import "./HomePage.css";
-import AddIncome from "../Components/HomePage/AddIncome";
+import { Row, Col } from "antd";
 import AddExpense from "../Components/HomePage/Expense";
 
 const { Sider, Content } = Layout;
@@ -18,21 +18,11 @@ function HomePage() {
           <Content style={{ margin: "16px" }}>
             <Row gutter={16}>
               <Col span={12}>
-                <AddIncome />
-              </Col>
-              <Col span={12}>
                 <AddExpense />
               </Col>
-            </Row>
-            <Row gutter={16} style={{ marginTop: "20px" }}>
-              <Col span={24}>
-                <Timeline />
-              </Col>
-            </Row>
-            <Row gutter={16} style={{ marginTop: "20px" }}>
-              <Col span={24}>
-                <CalendarComponent />
-              </Col>
+              {/* <Col span={12}>
+                <Graphic />
+              </Col> */}
             </Row>
           </Content>
         </Layout>

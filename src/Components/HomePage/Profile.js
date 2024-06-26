@@ -19,6 +19,43 @@ import "./Profile.css";
 const { Sider, Content } = Layout;
 
 function Profile({ onPasswordChange }) {
+  // const [job] = useState(treeData);
+
+  // const jobCollectionRef = collection(db, "meslekler");
+
+  // useEffect(() => {
+  //   const getJob = async () => {
+  //     try {
+  //       const data = await getDocs(jobCollectionRef);
+  //       console.log(data);
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   };
+  //   getJob();
+  // }, []);
+
+  // const fetchTreeData = async () => {
+  //   const jobCollectionRef = collection(db, "meslekler");
+  //   const snapshot = await getDocs(jobCollectionRef);
+  //   const treeData1 = snapshot.docs.map((doc) => ({
+  //     title: doc.data().title,
+  //     value: doc.data().value,
+  //     children: doc.data().children,
+  //   }));
+  //   return treeData;
+  // };
+
+  // const [treeData, setTreeData] = useState([]);
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const data = await fetchTreeData();
+  //     setTreeData(data);
+  //   };
+  //   fetchData();
+  // }, []);
+
   const [formData, setFormData] = useState({});
   const [selectedImage, setSelectedImage] = useState(null);
 

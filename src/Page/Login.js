@@ -4,6 +4,16 @@ import FormItem from "antd/es/form/FormItem";
 import "./Login.css";
 import Navbar from "../Components/Navbar";
 import LogContent from "../Components/LogContent";
+import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import {
+  auth,
+  googleProvider,
+  facebookProvider,
+  twitterProvider,
+} from "../Config/firebase";
+import { useState } from "react";
+import { useNavigate } from "react-router";
+import { Alert } from "antd";
 
 import {
   FacebookOutlined,
@@ -13,6 +23,50 @@ import {
 } from "@ant-design/icons";
 
 function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
+
+  const signUp = async () => {
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      navigate("/home");
+    } catch (error) {
+      setError("Yanlış email veya şifre!");
+      console.log(error.message);
+    }
+  };
+
+  const signInWithGoogle = async () => {
+    try {
+      await signInWithPopup(auth, googleProvider);
+      navigate("/home");
+    } catch (error) {
+      setError("Yanlış email veya şifre!");
+      console.log(error.message);
+    }
+  };
+
+  const signInWithTwitter = async () => {
+    try {
+      await signInWithPopup(auth, twitterProvider);
+      navigate("/home");
+    } catch (error) {
+      setError("Yanlış email veya şifre!");
+      console.log(error.message);
+    }
+  };
+
+  const signInWithFacebook = async () => {
+    try {
+      await signInWithPopup(auth, facebookProvider);
+      navigate("/home");
+    } catch (error) {
+      setError("Yanlış email veya şifre!");
+      console.log(error.message);
+    }
+  };
   const login = (url) => {
     console.log(`Icon clicked! Redirecting to ${url}`);
     window.open(url, "_blank");
@@ -21,17 +75,17 @@ function Login() {
   const socialMediaIcons = [
     {
       component: TwitterOutlined,
-      url: "https://twitter.com/",
+      url: signInWithTwitter,
       style: { color: "cyan" },
     },
     {
       component: FacebookOutlined,
-      url: "https://facebook.com/",
+      url: signInWithFacebook,
       style: { color: "blue" },
     },
     {
       component: GoogleOutlined,
-      url: "https://google.com/",
+      url: signInWithGoogle,
       style: { color: "red" },
     },
     {
@@ -48,7 +102,16 @@ function Login() {
           <LogContent className="video" />
         </div>
         <Card title={"Welcome to Money Pocket"} className="loginCard">
-          <Form className="loginFrom" onFinish={login}>
+          {error && (
+            <Alert
+              message="Giriş Başarısız"
+              description={error}
+              type="error"
+              showIcon
+              style={{ marginBottom: "16px" }}
+            />
+          )}
+          <Form className="loginFrom" onFinish={signUp}>
             <Typography.Title className="titleLogin">
               Think it. Make it.
             </Typography.Title>
@@ -71,6 +134,7 @@ function Login() {
                 className="inputLogin"
                 placeholder="Enter your Email"
                 style={{ width: "20vw", height: "4vh" }}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </FormItem>
 
@@ -94,6 +158,7 @@ function Login() {
                   width: "20vw",
                   height: "4vh",
                 }}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </FormItem>
           </Form>
@@ -102,6 +167,7 @@ function Login() {
             type="primary"
             htmlType="submit"
             block
+            onClick={signUp}
           >
             Log in
           </Button>
@@ -113,7 +179,11 @@ function Login() {
                 <IconComponent
                   key={index}
                   className="socialIcon"
-                  onClick={() => login(icon.url)}
+                  onClick={() =>
+                    typeof icon.url === "function"
+                      ? icon.url()
+                      : login(icon.url)
+                  }
                   style={icon.style}
                 />
               );

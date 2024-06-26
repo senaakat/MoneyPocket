@@ -41,7 +41,6 @@ const menuData = [
       { key: "9", label: "GİZLİLİK" },
       { key: "10", label: "GÜVENLİK" },
       { key: "11", label: "HELP" },
-      { key: "12", label: "LOG OUT", link: "/" },
     ],
   },
   {

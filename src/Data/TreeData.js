@@ -1,3 +1,15 @@
+// "use strict";
+
+// const admin = require("firebase-admin");
+// const serviceAccount = require("C:/Users/Senaa/Downloads/money-pocket-67ebc-firebase-adminsdk-tofzj-4a8e0e7478.json"); // Firestore servis hesabı anahtarınızın yolu
+
+// admin.initializeApp({
+//   credential: admin.credential.cert(serviceAccount),
+//   databaseURL: "https://job/KaFWUwO7lLsU0K59T54G.firebaseio.com", // Firestore veritabanı URL'si
+// });
+
+// const db = admin.firestore();
+
 const treeData = [
   {
     title: "Kamu",
@@ -54,3 +66,16 @@ const treeData = [
 ];
 
 export default treeData;
+
+// treeData.forEach((item, index) => {
+//   db.collection("meslekler")
+//     .doc(`meslek_${index}`)
+//     .set(item)
+//     .then(() => {
+//       console.log(`Meslek_${index} eklendi.`);
+//     })
+//     .catch((error) => {
+//       console.error(`Hata: ${error}`);
+//     });
+// });
+// module.exports = treeData;
