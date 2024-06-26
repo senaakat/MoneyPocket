@@ -6,6 +6,8 @@ import { Row, Col } from "antd";
 import AddExpense from "../Components/HomePage/Expense";
 import Calendar from "../Components/HomePage/Calendar";
 import { TransactionProvider } from "../Data/TransactionContext";
+import { PieChart } from "recharts";
+import CategoriesChart from "../Components/HomePage/CategoriesChart";
 
 const { Sider, Content } = Layout;
 
@@ -20,13 +22,20 @@ function HomePage() {
           <Content style={{ margin: "16px" }}>
             <TransactionProvider>
               {" "}
-              {/* TransactionProvider ile sarmalandı */}
               <Row gutter={16}>
                 <Col span={12}>
                   <AddExpense />
                 </Col>
                 <Col span={12}>
                   <Calendar />
+                </Col>
+                <Col span={12}>
+                  <CategoriesChart />
+                </Col>
+              </Row>
+              <Row gutter={16}>
+                <Col span={12}>
+                  <PieChart />
                 </Col>
               </Row>
             </TransactionProvider>

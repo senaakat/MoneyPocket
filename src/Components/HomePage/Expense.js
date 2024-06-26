@@ -5,6 +5,8 @@ import "./Expense.css";
 import categories from "../../Data/Categories";
 import { useTransactionContext } from "../../Data/TransactionContext";
 import moment from "moment";
+import PieChart from "./PieChart.js";
+import CategoriesChart from "./CategoriesChart.js";
 
 function Expense() {
   const { addTransaction, selectedDate, setSelectedDate } =
@@ -104,6 +106,7 @@ function Expense() {
           </Form.Item>
         </Form>
         <div className="total-income">Total Income: ${totalIncome}</div>
+
         <div>
           {transactions.map((t, index) => (
             <Card className="transaction-card" key={index}>
@@ -112,6 +115,12 @@ function Expense() {
               <p>Date: {new Date(t.date).toDateString()}</p>
             </Card>
           ))}
+        </div>
+        <div>
+          <PieChart transactions={transactions} />
+        </div>
+        <div>
+          <CategoriesChart transactions={transactions} />
         </div>
       </Card>
     </div>
