@@ -4,6 +4,7 @@ import { Calendar as AntCalendar } from "antd";
 import moment from "moment";
 import { List, Modal } from "antd";
 import { Button } from "antd";
+import "./Calendar.css";
 
 function Calendar() {
   const { transactions } = useTransactionContext();
@@ -18,10 +19,11 @@ function Calendar() {
     type: transaction.amount >= 0 ? "income" : "expense",
   }));
   return (
-    <div>
+    <div className="calendar-container">
       <h2>Ekstre Takvimim</h2>
-      <div style={{ marginBottom: "10px" }}>
+      <div style={{ marginBottom: "10px" }} className="buttons-container">
         <Button
+          className="custom-button"
           style={{ marginRight: "10px" }}
           onClick={() => {
             Modal.info({
@@ -42,6 +44,7 @@ function Calendar() {
           Gelirler
         </Button>
         <Button
+          className="custom-button"
           onClick={() => {
             Modal.info({
               title: "Giderler",
@@ -62,6 +65,7 @@ function Calendar() {
         </Button>
       </div>
       <AntCalendar
+        className="custom-calendar"
         style={{ width: "100%" }}
         dateCellRender={(date) => {
           const formattedDate = date.format("YYYY-MM-DD");
@@ -76,6 +80,7 @@ function Calendar() {
                   dataSource={dailyEvents}
                   renderItem={(item) => (
                     <List.Item
+                      className="event-item"
                       onClick={() => {
                         Modal.info({
                           title: "Detaylar",
