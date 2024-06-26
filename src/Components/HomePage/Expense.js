@@ -1,33 +1,64 @@
 import React from "react";
-import { Form, Input, Button, Select, Card, Calendar, Badge } from "antd";
+import { Form, Input, Button, Select, Card, DatePicker } from "antd";
 import { useState } from "react";
 import "./Expense.css";
 import categories from "../../Data/Categories";
+import { useTransactionContext } from "../../Data/TransactionContext";
+import moment from "moment";
 
 function Expense() {
+  const { addTransaction, selectedDate, setSelectedDate } =
+    useTransactionContext();
   const [transactions, setTransactions] = useState([]);
   const [category, setCategory] = useState("");
   const [amount, setAmount] = useState(0);
   const [totalIncome, setTotalIncome] = useState(0);
+  const [showDatePicker, setShowDatePicker] = useState(false);
+
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+    setShowDatePicker(false);
+  };
 
   const handleAddTransaction = () => {
+    if (!selectedDate) {
+      alert("Lütfen bir tarih seçin.");
+      return;
+    }
+
     const parsedAmount = parseFloat(amount);
-    const currentDate = new Date();
-    const newTransaction = { category, amount: parsedAmount };
+
+    const newTransaction = {
+      category,
+      amount: parsedAmount,
+      date: selectedDate.toDate(),
+    };
+    addTransaction(newTransaction);
     setTransactions([...transactions, newTransaction]);
     setTotalIncome((prevTotal) => prevTotal + parsedAmount);
     setCategory("");
     setAmount(0);
+    setSelectedDate(null);
   };
 
   const handleRemoveTransaction = () => {
+    if (!selectedDate) {
+      alert("Lütfen bir tarih seçin.");
+      return;
+    }
+
     const parsedAmount = parseFloat(amount);
-    const currentDate = new Date();
-    const newTransaction = { category, amount: -parsedAmount };
+    const newTransaction = {
+      category,
+      amount: -parsedAmount,
+      date: selectedDate.toDate(),
+    };
+    addTransaction(newTransaction);
     setTransactions([...transactions, newTransaction]);
     setTotalIncome((prevTotal) => prevTotal - parsedAmount);
     setCategory("");
     setAmount(0);
+    setSelectedDate(null);
   };
 
   return (
@@ -49,6 +80,15 @@ function Expense() {
               type="number"
               value={amount}
               onChange={(e) => setAmount(e.target.value)}
+            />
+          </Form.Item>
+          <Form.Item label="Date">
+            <DatePicker
+              value={selectedDate ? moment(selectedDate) : null}
+              onChange={handleDateChange}
+              style={{ width: "100%" }}
+              open={showDatePicker}
+              onOpenChange={(status) => setShowDatePicker(status)}
             />
           </Form.Item>
           <Form.Item>
@@ -74,7 +114,6 @@ function Expense() {
           ))}
         </div>
       </Card>
-      <Calendar dateCellRender={dateCellRender} />
     </div>
   );
 }
