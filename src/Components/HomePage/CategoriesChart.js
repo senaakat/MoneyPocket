@@ -49,7 +49,7 @@ const CategoriesChart = ({ transactions }) => {
       }}
     >
       <div style={{ textAlign: "center", marginBottom: 40 }}>
-        <h3>Income by Category</h3>
+        <h3>KATEGORİ GELİRLERİ</h3>
         <Chart width={400} height={400}>
           <Pie
             data={pieChartData}
@@ -78,7 +78,7 @@ const CategoriesChart = ({ transactions }) => {
       </div>
 
       <div style={{ textAlign: "center" }}>
-        <h3>Expense by Category</h3>
+        <h3>KATEGORİ GİDERLERİ</h3>
         <Chart width={400} height={400}>
           <Pie
             data={pieChartData}
