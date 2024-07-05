@@ -5,6 +5,7 @@ import HomePage from "./Page/HomePage";
 import Profile from "./Components/HomePage/Profile";
 import ChangePassword from "./Components/NavigationBar/ChangePassword";
 import { Calendar } from "antd";
+import Report from "./Components/HomePage/Report";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path="/changepassword" element={<ChangePassword />} />
             <Route path="/add-expense" element={<HomePage />} />
             <Route path="/calendar" element={<Calendar />} />
+            <Route path="/report" element={<Report />} />
           </Routes>
         </BrowserRouter>
       </>

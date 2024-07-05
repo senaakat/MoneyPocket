@@ -45,7 +45,7 @@ const menuData = [
     key: "MORE",
     icon: <FileDoneOutlined />,
     title: "MORE",
-    items: [{ key: "9", label: "RAPOR AL" }],
+    items: [{ key: "9", label: "RAPOR AL", link: "/report" }],
   },
 ];
 

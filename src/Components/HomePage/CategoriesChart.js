@@ -1,6 +1,5 @@
 import React from "react";
 import { PieChart as Chart, Pie, Tooltip, Legend, Cell } from "recharts";
-import { Card } from "antd";
 
 const CategoriesChart = ({ transactions }) => {
   if (!transactions || transactions.length === 0) {
@@ -40,15 +39,8 @@ const CategoriesChart = ({ transactions }) => {
   ];
 
   return (
-    <Card
-      style={{
-        width: "100%",
-        padding: 20,
-        borderRadius: 10,
-        boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
-      }}
-    >
-      <div style={{ textAlign: "center", marginBottom: 40 }}>
+    <div style={{ display: "flex", justifyContent: "space-around" }}>
+      <div style={{ textAlign: "center", width: "45%", marginRight: "20px" }}>
         <h3>KATEGORİ GELİRLERİ</h3>
         <Chart width={400} height={400}>
           <Pie
@@ -77,7 +69,7 @@ const CategoriesChart = ({ transactions }) => {
         </Chart>
       </div>
 
-      <div style={{ textAlign: "center" }}>
+      <div style={{ textAlign: "center", width: "45%", marginLeft: "20px" }}>
         <h3>KATEGORİ GİDERLERİ</h3>
         <Chart width={400} height={400}>
           <Pie
@@ -106,7 +98,7 @@ const CategoriesChart = ({ transactions }) => {
           />
         </Chart>
       </div>
-    </Card>
+    </div>
   );
 };
 
