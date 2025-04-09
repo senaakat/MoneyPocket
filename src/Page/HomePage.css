@@ -1,0 +1,11 @@
+.homeLayout {
+    min-height: 100vh;
+    background-color: #0a6c87;
+  }
+
+  .ant-layout-content {
+    background-color: #F1ECEC;
+    padding: 24px;
+    margin: 0;
+    min-height: 280px;
+}

@@ -1,0 +1,66 @@
+.expense-container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #1dacac;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  color: #333333;
+}
+
+.expense-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.expense-header h1 {
+  font-size: 24px;
+  color: #333333;
+}
+
+.expense-form .ant-form-item {
+  margin-bottom: 15px;
+}
+
+.expense-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.expense-buttons .ant-btn {
+  width: 100%;
+  background-color: #3A5250;
+  border: none;
+  color: #ffffff;
+  transition: background-color 0.3s ease;
+}
+
+.expense-buttons .ant-btn:hover {
+  background-color: #40a9ff;
+}
+
+.expense-buttons .ant-btn:active {
+  background-color: #096dd9;
+}
+
+.total-income {
+  text-align: center;
+  font-size: 18px;
+  color: #1890ff;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.transaction-card {
+  margin-bottom: 10px;
+  background-color: #ffffff;
+  border-radius: 5px;
+  padding: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.transaction-card p {
+  margin: 0;
+  color: #333333;
+}

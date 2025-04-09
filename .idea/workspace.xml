@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="5cc016fd-4f4c-451e-9552-7a9ff6139369" name="Changes" comment="Profile part was created">
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/HomePage/AddIncome.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/HomePage/AddIncome.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/HomePage/CalendarComponent.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/HomePage/Component.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/HomePage/Expense.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/HomePage/Expense.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/HomePage/TimeLine.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Page/HomePage.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Page/HomePage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Page/HomePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Page/HomePage.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;senaakat&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/senaakat/MoneyPocket.git&quot;,
+    &quot;accountId&quot;: &quot;91c57c2a-6b37-428d-8eeb-f1fd5f074439&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2iBDCh0hNkY8DlHy88ZlH9PZbuG" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "app.teamhub.trackedBranches": "-1nurmuq/main",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.18034.62" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.18034.62" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5cc016fd-4f4c-451e-9552-7a9ff6139369" name="Changes" comment="" />
+      <created>1718954960694</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1718954960694</updated>
+      <workItem from="1718954962950" duration="38000" />
+      <workItem from="1719125760607" duration="265000" />
+      <workItem from="1719126511501" duration="19000" />
+      <workItem from="1719316699580" duration="470000" />
+    </task>
+    <task id="LOCAL-00001" summary="Profile part was created">
+      <option name="closed" value="true" />
+      <created>1719126015637</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1719126015637</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Profile part was created" />
+    <option name="LAST_COMMIT_MESSAGE" value="Profile part was created" />
+  </component>
+</project>

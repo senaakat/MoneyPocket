@@ -1,0 +1,83 @@
+.Navbar{
+    width: 100%;
+    height: 110px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: #3f8a80;
+    position:fixed;
+    top: 0; 
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.logo{
+    width: 160px;
+    cursor: pointer;
+    justify-content:flex-start;
+    float: left; 
+    margin-right: 20px;
+}
+
+.tabs{
+    flex:1;
+    display: flex;
+    list-style: none;
+    text-align: center;
+}
+
+.tabPane{
+    display: inline-block;
+    margin: 10px 20px;
+    size: 50px;
+}
+.tabs .ant-tabs-nav {
+    font-size: 100px; 
+}
+
+.tabs .ant-tabs-tab {
+    padding: 30px 
+}
+
+.tabs .ant-tabs-nav::before {
+    width: 1000px;
+    display: flex;
+    justify-content: center;
+    color: #ffffff;
+}
+
+.tabs .ant-tabs-tab-btn {
+    font-size: 20px;
+    font-weight: bold; 
+    color: #0032b0df;
+}
+
+.searchBox {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; 
+    background: #ffffff80;
+    padding: 10px 20px;
+    border-radius: 50px;
+}
+
+.searchBox input{
+    padding: 6px;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-size: 18px;
+    max-width: 200px;
+}
+
+.searchBox input::placeholder{
+    color: #fff;
+}
+
+.searchBox img{
+    width: 20px;
+    cursor: pointer;
+}

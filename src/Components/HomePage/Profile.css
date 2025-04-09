@@ -1,0 +1,97 @@
+.profile-container {
+    background-color: #e0f2f1; /* Açık bir yeşil tonu */
+    padding: 20px;
+    justify-content: center; /* İçeriği yatayda merkezlemek için */
+  align-items: flex-start; /* İçeriği dikeyde başa hizalamak için */
+}
+
+.homeLayout {
+    min-height: 100vh;
+    background-color: #f5f0f0;
+}
+
+.ant-form-item {
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center;
+    width: 90%;
+    background-color: #ffffff; 
+    border-radius: 10px; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    padding: 20px;
+    margin: 0 10%;
+    
+}
+
+.upload-container {
+    position: relative;
+}
+
+.upload {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    background-color: #f8f9fa; /* Açık gri tonu */
+    width: 200px;
+    height: 200px;
+    margin-top: 10px;
+    border-radius: 50%; /* Yuvarlak bir şekil vermek için */
+    border: 2px dashed #6c757d; /* Kesikli çizgi çerçeve */
+    cursor: pointer; /* Fare üzerine gelince işaretçiyi değiştir */
+    transition: border-color 0.3s ease; /* Geçiş efekti */
+}
+
+.upload:hover {
+    border-color: #007bff; /* Hover durumunda çerçeve rengini değiştir */
+}
+
+.upload label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.uploaded-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.ant-form-item {
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column; /* Elemanları alt alta sırala */
+}
+
+.ant-form-item-label {
+    flex: 0 0 auto;
+    width: 120px;
+    flex: 0 0 auto;
+    width: 120px;
+    margin-right: 16px; /* Labellar arasındaki boşluğu azalt */
+    text-align: right; 
+}
+
+.ant-form-item-control {
+    flex: 1;
+}
+
+.ant-form-item-explain {
+    margin-top: 4px;
+}
+
+.form-spacing h4 {
+    margin-bottom: 10px;
+}

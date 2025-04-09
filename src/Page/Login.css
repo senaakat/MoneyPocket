@@ -1,0 +1,58 @@
+.login{
+    padding-top: 20px;
+    padding-bottom:50px ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    min-width: 100vw;
+    width: 100vw;
+    background-size: cover;
+    background-image: url("C:\Users\senaa\Downloads\MoneyPocket-main\src\image\1600w-F2CyNS5sQdM.webp");
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .loginFrom{
+    background-color: #00000000;
+    box-shadow: 0px 8px 32px 0rgba(0,0,255,0.3);
+    backdrop-filter: blur(3px);
+    padding: 0px 16px 16px 16px;
+    border-radius: 16px;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .loginCard{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px;
+    border-radius: 16px;
+    background-color: #ADE0D9;
+    backdrop-filter: blur(3px);
+    margin-top: 7%;
+    margin-left: 10%;
+  }
+
+
+  .titleLogin{
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+  }
+  .socialLogin{
+    display: flex;
+    justify-content: center;
+    gap: 64px;
+    color: white;
+    font-size: 24px;
+  }
+
+
+
